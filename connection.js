@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 //FUNCTION TO CONNECT TO THE MONGODB
 async function ConnectToMongoDB() {
   const values = utility.ReadValues(
-    "/Users/rahulsrivastava/Desktop/Projects/Relish_Amazon_Clone/relish_backend/mongo.txt",
+    "/mongo.txt",
   );
   const connectionString = utility.GenerateMongoString(
     values[0],
