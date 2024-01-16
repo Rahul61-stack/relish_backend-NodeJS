@@ -1,18 +1,22 @@
 const utility = require("./utility");
 
 const mongoose = require("mongoose");
+require('dotenv').config()
+
+const db_user = process.env.DB_USERNAME
+const db_password = process.env.DB_PASSWORD
+const url = process.env.URL
+const db_name = process.env.DB
 
 //FUNCTION TO CONNECT TO THE MONGODB
 async function ConnectToMongoDB() {
-  const values = utility.ReadValues(
-    "/Users/rahulsrivastava/Desktop/Projects/Relish_Amazon_Clone/relish_backend/mongo.txt",
-  );
+  // const values = utility.ReadValues(
+  //   "/mongo.txt",
+  // );
   const connectionString = utility.GenerateMongoString(
-    values[0],
-    values[1],
-    values[2],
-    values[3],
+    db_user,db_password,url,db_name
   );
+  console.log(connectionString)
   mongoose.connect(connectionString, { retryWrites: true });
 
   const db = mongoose.connection;
