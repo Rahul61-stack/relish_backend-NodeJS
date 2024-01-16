@@ -13,8 +13,6 @@ app.use('/items',itemRouter)
 app.use('/customers',customerRouter)
 app.use('/orders',orderRouter)
 
-app.listen(5002,()=>{console.log("APP RUNNING")})
-
 
 
 
