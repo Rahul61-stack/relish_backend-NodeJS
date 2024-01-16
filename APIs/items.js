@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require("express")
 const Item = require('../models/items')
 const itemRouter = express.Router()
 itemRouter.use(express.json())
@@ -31,9 +31,27 @@ itemRouter.get('/:id',getItem,(req,res)=>{
     res.json(res.item)
 })
 
+itemRouter.get('/name/:name',async(req,res)=>{
+    try{
+        const item = await Item.findOne({name:req.params.name})
+        res.status(200).json(item)
+    }
+    catch(err){
+        res.status(500).json({message:err.message})
+    }
+})
+
+//GET ITEMS BASED ON CATEGORY
+itemRouter.get('/category/:category',async(req,res)=>{
+    try{
+        const items = await Item.find({category:req.params.category})
+        res.status(200).json(items)
+    }
+    catch(err){
+        res.status(500).json({message:err.message})
+    }
+})
 //PATCH ITEM TO ADD REVIEW
-
-
 //
 
 //MIDDLEWARE TO GET THE ITEM

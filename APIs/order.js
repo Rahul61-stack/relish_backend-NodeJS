@@ -9,15 +9,26 @@ orderRouter.post('/',async(req,res)=>{
         customerId:req.body.customerId,
         itemList:req.body.itemList,
         address:req.body.address,
-        paymentMethod:req.body.pType
+        paymentMethod:req.body.pType,
+        trackking:req.body.tracking
     })
     try{
         const newOrder = await order.save()
         res.status(201).json({message:"Order placed successfully"})
+        console.log(newOrder)
     }
     catch(err){
         res.status(500).json({message:err.message})
     }
 })
-
+ //API TO GET ORDERS BASED ON CUSTOMERID
+ orderRouter.get('/:id',async(req,res)=>{
+    try{
+        const orders = await Order.find({customerId:req.params.id})
+        res.status(200).json(orders)
+    }
+    catch(err){
+        res.status(500).json({message:err.message})
+    }
+ })
 module.exports = orderRouter

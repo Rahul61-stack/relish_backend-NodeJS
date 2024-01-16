@@ -20,6 +20,10 @@ const orderSchema = new mongoose.Schema({
     paymentMethod:{
         type:String,
         required:true
+    },
+    tracking:{
+        type:String,
+        required:true
     }
 
 })
