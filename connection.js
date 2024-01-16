@@ -10,9 +10,15 @@ const db_name = process.env.DB
 
 //FUNCTION TO CONNECT TO THE MONGODB
 async function ConnectToMongoDB() {
+<<<<<<< HEAD
   // const values = utility.ReadValues(
   //   "/mongo.txt",
   // );
+=======
+  const values = utility.ReadValues(
+    "/mongo.txt",
+  );
+>>>>>>> 0cba7bb2e0734aa606ec8f3c75d7fe4a0fb1cfa0
   const connectionString = utility.GenerateMongoString(
     db_user,db_password,url,db_name
   );
